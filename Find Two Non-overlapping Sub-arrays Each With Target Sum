@@ -1,0 +1,49 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class Main {
+
+    public static int minSumOfLengths(int[] arr, int target) {
+        int n = arr.length;
+        int[] minLen = new int[n];
+        Arrays.fill(minLen, Integer.MAX_VALUE);
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1); // Base case for prefix sum
+
+        int sum = 0;
+        int result = Integer.MAX_VALUE;
+        int minSoFar = Integer.MAX_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+
+            
+            if (map.containsKey(sum - target)) {
+                int prevIndex = map.get(sum - target);
+                int currentLen = i - prevIndex;
+
+                
+                if (prevIndex >= 0 && minLen[prevIndex] != Integer.MAX_VALUE) {
+                    result = Math.min(result, currentLen + minLen[prevIndex]);
+                }
+
+                minSoFar = Math.min(minSoFar, currentLen);
+            }
+
+            minLen[i] = minSoFar;
+            map.put(sum, i);
+        }
+
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
+    public static void main(String[] args) {
+        
+        int[] arr = {3, 2, 2, 4, 3};
+        int target = 3;
+
+        
+        System.out.println(minSumOfLengths(arr, target));
+    }
+}
