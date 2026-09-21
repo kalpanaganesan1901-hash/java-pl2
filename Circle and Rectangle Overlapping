@@ -1,0 +1,31 @@
+public class Main {
+
+    public static boolean checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        // Find the closest x-coordinate on the rectangle to xCenter
+        int nearestX = Math.max(x1, Math.min(xCenter, x2));
+        
+        // Find the closest y-coordinate on the rectangle to yCenter
+        int nearestY = Math.max(y1, Math.min(yCenter, y2));
+        
+        // Calculate squared distance from circle center to closest point
+        int distX = xCenter - nearestX;
+        int distY = yCenter - nearestY;
+        
+        // Check if squared distance is within squared radius
+        return (distX * distX + distY * distY) <= radius * radius;
+    }
+
+    public static void main(String[] args) {
+        // Example 1 values from the screenshot
+        int radius = 1;
+        int xCenter = 0;
+        int yCenter = 0;
+        int x1 = 1;
+        int y1 = -1;
+        int x2 = 3;
+        int y2 = 1;
+
+        // Prints only the boolean output
+        System.out.println(checkOverlap(radius, xCenter, yCenter, x1, y1, x2, y2));
+    }
+}
