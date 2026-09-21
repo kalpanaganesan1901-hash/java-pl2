@@ -1,0 +1,52 @@
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+
+        int radius = 1;
+        int xCenter = 0;
+        int yCenter = 0;
+        int x1 = 1;
+        int y1 = -1;
+        int x2 = 3;
+        int y2 = 1;
+
+        int x = Math.max(x1, Math.min(xCenter, x2));
+        int y = Math.max(y1, Math.min(yCenter, y2));
+
+        int dx = x - xCenter;
+        int dy = y - yCenter;
+
+        boolean result = dx * dx + dy * dy <= radius * radius;
+
+        System.out.println(result);
+    }
+}class Solution {
+    public int totalNumbers(int[] digits) {
+        int count = 0;
+
+        for (int a = 1; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 8; c += 2) {
+
+                    if (a == b || a == c || b == c)
+                        continue;
+
+                    boolean x = false, y = false, z = false;
+
+                    for (int d : digits) {
+                        if (d == a && !x) x = true;
+                        else if (d == b && !y) y = true;
+                        else if (d == c && !z) z = true;
+                    }
+
+                    if (x && y && z)
+                        count++;
+                }
+            }
+        }
+
+        return count;
+    }
+}
