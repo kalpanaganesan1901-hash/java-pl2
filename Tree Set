@@ -1,0 +1,15 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        var num = new TreeSet<>();
+        num.add("volvo");
+        num.add("benz");
+         num.add("alto");
+         num.add("maruthi"); 
+num.add("kia");
+num.add("maruthi");
+        
+                System.out.println(num);
+            
+    } 
+}
