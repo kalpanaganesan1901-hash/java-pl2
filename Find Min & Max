@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(10, 25, 5, 40, 15);
+
+        int max = Collections.max(numbers);
+        int min = Collections.min(numbers);
+
+        System.out.println("Maximum value: " + max);
+        System.out.println("Minimum value: " + min);
+    }
+}
