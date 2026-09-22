@@ -1,0 +1,30 @@
+
+import java.util.Scanner; // Step 1: Import the Scanner class
+public class UserInputExample {
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        // Step 2: Create a Scanner object to read from the console
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        // Step 3: Capture the integer input entered by the user
+        int num = scanner.nextInt();
+        // Step 4: Use the input in the program
+        if (isPrime(num)) {
+            System.out.println(num + " is a prime number!");
+        } else {
+            System.out.println(num + " is NOT a prime number.");
+        }
+        // Close the scanner
+        scanner.close();
+    }
+}
